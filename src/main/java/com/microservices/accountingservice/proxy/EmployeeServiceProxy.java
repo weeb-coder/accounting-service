@@ -1,4 +1,4 @@
-package com.microservices.accountingservice;
+package com.microservices.accountingservice.proxy;
 
 import com.microservices.accountingservice.model.Employee;
 import org.springframework.cloud.openfeign.FeignClient;
