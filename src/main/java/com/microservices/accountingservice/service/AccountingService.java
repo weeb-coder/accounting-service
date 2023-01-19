@@ -19,25 +19,14 @@ public class AccountingService {
     @Autowired
     WorkhourServiceProxy workhourServiceProxy;
 
-    public String calcSalary(EmployeeSalary emp) {
+    public int calcSalary(EmployeeSalary emp) {
         Optional<Employee> employee = employeeServiceProxy.getEmployeeById(emp.getEmpId());
         EmployeeLeave empLeave = workhourServiceProxy.getDetails(emp.getEmpId());
         int baseSalary = employee.orElseThrow().getBaseSalary();
         int employeeLeaveCount = empLeave.getCount();
         int daysInMonth = empLeave.getDaysInMonth();
         int salary = baseSalary * (daysInMonth - employeeLeaveCount) / daysInMonth;
-        System.out.println("-----------------------------------");
-        System.out.println("Emp : " + emp);
-        System.out.println(baseSalary);
-        System.out.println(employeeLeaveCount);
-        System.out.println(daysInMonth);
-        System.out.println("-----------------------------------");
-        System.out.println(salary);
-        System.out.println("-----------------------------------");
-        return "Employee salary calculated.";
+        return salary;
     }
 
-    public String calcEmployeeLeave(EmployeeSalary emp) {
-        return "Employee leave calculated.";
-    }
 }
