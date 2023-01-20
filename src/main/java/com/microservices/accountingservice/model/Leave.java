@@ -5,17 +5,16 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = Employee.EmployeeBuilder.class)
+@JsonDeserialize(builder = Leave.LeaveBuilder.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmployeeLeave {
-
+public class Leave {
     private int count;
     private int daysInMonth;
 
-    public EmployeeLeave() {}
+    public Leave() {}
 
-    public EmployeeLeave(EmployeeLeaveBuilder builder) {
+    public Leave(LeaveBuilder builder) {
         this.count = builder.count;
         this.daysInMonth = builder.daysInMonth;
     }
@@ -29,22 +28,22 @@ public class EmployeeLeave {
     }
 
     @JsonPOJOBuilder(withPrefix = "set")
-    private static class EmployeeLeaveBuilder {
+    public static class LeaveBuilder {
         protected int count;
         protected int daysInMonth;
 
-        public EmployeeLeaveBuilder setCount(int count) {
+        public LeaveBuilder setCount(int count) {
             this.count = count;
             return this;
         }
 
-        public EmployeeLeaveBuilder setDaysInMonth(int daysInMonth) {
+        public LeaveBuilder setDaysInMonth(int daysInMonth) {
             this.daysInMonth = daysInMonth;
             return this;
         }
 
-        public EmployeeLeave build() {
-            return new EmployeeLeave(this);
+        public Leave build() {
+            return new Leave(this);
         }
     }
 }

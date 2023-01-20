@@ -7,10 +7,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import java.util.Optional;
 
-@FeignClient(name = "employee-service", url = "localhost:8000/employees")
+@FeignClient(name = "employee-service")
 public interface EmployeeServiceProxy {
 
     @GetMapping("/{empId}")
-    public Optional<Employee> getEmployeeById(@PathVariable("empId") String id);
+    Optional<Employee> getEmployeeById(@PathVariable("empId") String id);
 
 }

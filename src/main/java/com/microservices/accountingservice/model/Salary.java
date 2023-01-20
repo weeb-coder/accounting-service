@@ -5,46 +5,45 @@ import com.fasterxml.jackson.annotation.JsonInclude;
 import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import com.fasterxml.jackson.databind.annotation.JsonPOJOBuilder;
 
-@JsonDeserialize(builder = EmployeeSalary.EmployeeSalaryBuilder.class)
+@JsonDeserialize(builder = Employee.EmployeeBuilder.class)
 @JsonIgnoreProperties(ignoreUnknown = true)
 @JsonInclude(JsonInclude.Include.NON_NULL)
-public class EmployeeSalary {
+public class Salary {
 
-    private String empId;
     private int yearMonth;
+    private int amount;
 
-    public EmployeeSalary() {}
-
-    public EmployeeSalary(EmployeeSalaryBuilder builder) {
-        this.empId = builder.empId;
+    public Salary(SalaryBuilder builder) {
         this.yearMonth = builder.yearMonth;
-    }
-
-    public String getEmpId() {
-        return empId;
+        this.amount = builder.amount;
     }
 
     public int getYearMonth() {
         return yearMonth;
     }
 
+    public int getAmount() {
+        return amount;
+    }
+
     @JsonPOJOBuilder(withPrefix = "set")
-    public static class EmployeeSalaryBuilder {
-        protected String empId;
+    public static class SalaryBuilder {
+
         protected int yearMonth;
+        protected int amount;
 
-        public EmployeeSalaryBuilder setEmpId(String empId) {
-            this.empId = empId;
-            return this;
-        }
-
-        public EmployeeSalaryBuilder setYearMonth(int yearMonth) {
+        public SalaryBuilder setYearMonth(int yearMonth) {
             this.yearMonth = yearMonth;
             return this;
         }
 
-        public EmployeeSalary build() {
-            return new EmployeeSalary(this);
+        public SalaryBuilder setAmount(int amount) {
+            this.amount = amount;
+            return this;
+        }
+
+        public Salary build() {
+            return new Salary(this);
         }
     }
 }
