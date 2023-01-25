@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 @FeignClient(name = "workhour-service")
 public interface WorkhourServiceProxy {
 
-    @GetMapping("/{empId}")
+    @GetMapping("/employeeLeave/{empId}")
     Leave getEmployeeLeaveDetails(@PathVariable String empId);
 
 }

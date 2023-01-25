@@ -10,7 +10,7 @@ import java.util.Optional;
 @FeignClient(name = "employee-service")
 public interface EmployeeServiceProxy {
 
-    @GetMapping("/{empId}")
+    @GetMapping("/employees/{empId}")
     Optional<Employee> getEmployeeById(@PathVariable("empId") String id);
 
 }
