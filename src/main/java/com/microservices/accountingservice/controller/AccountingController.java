@@ -7,18 +7,16 @@ import io.github.resilience4j.circuitbreaker.annotation.CircuitBreaker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
-@RequestMapping
 public class AccountingController {
 
     @Autowired
     AccountingService service;
 
     @PostMapping("/calculateSalary")
-    @CircuitBreaker(name = "salary-calculation", fallbackMethod = "calcSalaryFallbackResponse")
+//    @CircuitBreaker(name = "salary-calculation", fallbackMethod = "calcSalaryFallbackResponse")
     public Salary calcSalary(@RequestBody EmployeeSalary emp) {
         return service.calcSalary(emp);
     }
