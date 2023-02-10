@@ -21,6 +21,8 @@ public class AccountingService {
     @Autowired
     WorkhourServiceProxy workhourServiceProxy;
 
+//    https://stackoverflow.com/questions/55394469/how-to-share-java-models-between-microservices-in-microservice-architecture
+
     public Salary calcSalary(EmployeeSalary emp) {
         Optional<Employee> employee = employeeServiceProxy.getEmployeeById(emp.getEmpId());
 //        Leave empLeave = workhourServiceProxy.getEmployeeLeaveDetails(emp.getEmpId());
